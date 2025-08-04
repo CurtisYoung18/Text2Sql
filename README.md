@@ -70,7 +70,7 @@ FROM student_scores;
 
 ### 3. 测试text2sql agent
 
-使用以下类型的问题来测试你的agent：
+使用以下类型的问题来测试agent：
 
 #### 基础统计查询
 - "统计全校各科目平均分"
@@ -135,9 +135,15 @@ ORDER BY subject, score DESC;
 ```
 
 **预期结果:**
+
+
 <img width="1034" height="916" alt="supabase" src="https://github.com/user-attachments/assets/ac597caa-5aa1-4758-9695-9d5c0b4f2c03" />
 
+---
+
 **Agent 结果:**
+
+
 <img width="764" height="756" alt="text2sql" src="https://github.com/user-attachments/assets/9ecde960-88e7-4b59-895d-ddd146bb8060" />
 
 
