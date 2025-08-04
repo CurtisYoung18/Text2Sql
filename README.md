@@ -2,6 +2,8 @@
 
 这个数据集专门为测试text2sql agent而设计，包含了丰富的学生成绩数据，可以用于验证agent的SQL生成和执行能力。
 
+### Agent Demo 链接：https://udify.app/chat/4AP6kVeEusD9RFUC
+
 ## 文件说明
 
 - `student_scores_test_data.sql` - 完整的数据库建表和数据插入脚本
@@ -122,22 +124,22 @@ FROM student_scores;
 
 ## 预期结果示例
 
-### 问题："统计全校各科目平均分"
+### 问题："查询各科目成绩优秀的学生（90分以上）"
 
 **预期SQL:**
 ```sql
-SELECT subject, ROUND(AVG(score), 2) AS avg_score 
+SELECT student_name, subject, score, class_name, grade
 FROM student_scores 
-GROUP BY subject 
-ORDER BY avg_score DESC;
+WHERE score >= 90 
+ORDER BY subject, score DESC;
 ```
 
 **预期结果:**
-- 英语: 约87.5分
-- 数学: 约85.2分
-- 语文: 约84.8分
-- 物理: 约83.1分
-- 化学: 约82.3分
+<img width="1034" height="916" alt="supabase" src="https://github.com/user-attachments/assets/ac597caa-5aa1-4758-9695-9d5c0b4f2c03" />
+
+**Agent 结果:**
+<img width="764" height="756" alt="text2sql" src="https://github.com/user-attachments/assets/9ecde960-88e7-4b59-895d-ddd146bb8060" />
+
 
 ## 注意事项
 
@@ -146,14 +148,4 @@ ORDER BY avg_score DESC;
 3. **索引优化**: 已为常用查询字段添加索引
 4. **字符编码**: 使用utf8mb4编码，支持中文字符
 
-## 扩展建议
 
-如果需要更复杂的测试场景，可以考虑：
-
-1. 添加更多的时间维度数据
-2. 增加更多的学生和班级
-3. 添加教师信息表
-4. 添加课程信息表
-5. 创建更复杂的关联查询场景
-
-这个数据集应该能够很好地测试你的text2sql agent在各种查询场景下的表现！ # Text2Sql
